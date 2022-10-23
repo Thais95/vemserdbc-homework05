@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
@@ -13,8 +14,8 @@
 <body>
     <main class="container">
 
+        <!-- TÍTULO COM BOTÃO DE TROCAR MESES -->
         <header>
-
             <div class="main-container">
 
                 <div>
@@ -38,31 +39,33 @@
 
             <!-- BOTÃO DE ADICIONAR TAREFA -->
             <button id="open-modal" class="add-reminder" type="button">
-                <img src="./img/patch-plus-fill.svg" alt="Adicionar">
+                <img src='./img/patch-plus-fill.svg'/>
                 <p>Adicionar lembrete</p>
             </button>
-            
+
         </header>
 
         <!-- MODAL -->
-        <div class="overlay hidden">
-            <div id="modal" class="modal hidden">
-                <div class="modal-header">
-                    <h2>Adicionar um lembrete</h2>
-                    <button id="close-modal" class="close-modal" type="button">
-                        <img src="./img/close.svg" alt="" title="Fechar">
+        <div id="overlay" class="overlay hidden">
+            <div class="modal-container">
+                <div id="modal" class="modal hidden">
+                    <div class="modal-header">
+                        <h2>Adicionar um lembrete</h2>
+                        <button id="close-modal" class="close-modal" type="button">
+                            <img src="./img/close.svg" alt="" title="Fechar">
+                        </button>
+                    </div>
+
+                    <label for="">Hora do lembrete</label>
+                    <input class="save-time-text" id="save-reminder-time" type="time">
+
+                    <label for="">Escreva seu lembrete</label>
+                    <input class="save-text" id="save-reminder-text" type="text">
+
+                    <button class="save" type="button" onclick="createReminder()" title="Salvar lembrete">
+                        Salvar
                     </button>
                 </div>
-
-                <label for="">Hora do lembrete</label>
-                <input class="save-time-text" id="save-reminder-time" type="time">
-
-                <label for="">Escreva seu lembrete</label>
-                <input class="save-text" id="save-reminder-text" type="text">
-
-                <button class="save" type="button" onclick="createReminder()" title="Salvar lembrete">
-                    Salvar
-                </button>
             </div>
         </div>
 

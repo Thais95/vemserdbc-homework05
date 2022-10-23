@@ -3,7 +3,6 @@
     padding: 0;
     border: none;
     text-decoration: none;
-    user-select: none;
     list-style: none;
     box-sizing: border-box;
     outline: none;
@@ -14,7 +13,7 @@
 }
 :root {
     --text-primary-color: #FCF7FF;
-    --text-secondary-color: #322458;
+    --text-secondary-color: #37236D;
     --text-detail-color: #574280;
     --done-color: #55FBDC;
     --disabled-text-color: #877a9d;
@@ -27,7 +26,7 @@ body {
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background: linear-gradient(180deg, #78679C 0%, #3D286B 100%);
+    background: linear-gradient(180deg, #8e77c6 0%, #40277d 100%);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -49,7 +48,8 @@ header {
 }
 h1 {
     color: var(--text-primary-color);
-    font-weight: 500;
+    font-weight: 600;
+    word-spacing: 5px;
     font-size: 2.625rem;
     user-select: none;
 }
@@ -65,10 +65,10 @@ button {
     width: 600px;
     height: 220px;
     border-radius: 25px;
-    background: #4C3C76;
+    background: #5E4996;
     box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.1);
     border: 0.5px solid;
-    border-color: #5F3871;
+    border-color: #6446b8;
 }
 
 /* BOTÃO DE PASSAR OS MESES */
@@ -84,7 +84,7 @@ button {
     justify-content: center;
     text-transform: uppercase;
     color: var(--text-primary-color);
-    background-color: #3C2D64;
+    background-color: #57448C;
     border: 1px solid rgba(255, 255, 255, 0.14);
     font-size: 0.9rem;
     font-weight: 300;
@@ -122,24 +122,27 @@ button {
     margin-bottom: 50px;
     width: 280px;
     height: 40px;
-    font-size: 1.125rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
     color: var(--text-secondary-color);
     background: rgba(255, 246, 255, 0.85);
     box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     transition: 0.5s;
+    border: 0.5px solid;
+    border-color: #7e5ddb;
 }
 .add-reminder:hover {
     background-color: white;
-    color: #B648EA;
+    color: #7a55e1;
     transition: 0.5s;
 }
 .add-reminder img {
     margin-left: 5px;
 }
 .add-reminder p {
-    margin-left: 40px;
+    margin-left: 35px;
 }
 
 
@@ -159,22 +162,21 @@ button {
     border-radius: 20px;
     margin-bottom: 15px;
     transition: 1s;
-    border: 0.5px solid;
-    border-color: #5F3871;
+    border: 1px solid;
+    border-color: #6446b8;
 }
 .reminder-card-todo::before,
 .reminder-card-completed::before,
 .reminder-card-disabled::before {
     content: '';
     width: 50px;
-    height: 70px;
+    height: 100%;
     margin-right: 15px;
     background: rgba(85, 251, 220, 0.75);
     border-radius: 20px 0px 0px 20px;
 }
 .reminder-status {
-    color: var(--text-detail-color);
-    font-size: 0.625rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     font-weight: 600;
     user-select: none;
@@ -194,9 +196,15 @@ button {
     font-weight: 500;
 }
 
-/* CARD PENDENTE */
+/* CARD ATIVO */
+.reminder-card-todo {
+    border-color: #cdc8d0be;
+}
+.reminder-card-todo .reminder-status {
+    color: #ffffffbb;
+}
 .reminder-card-todo::before {
-    background: rgba(252, 247, 255, 0.89);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.89) 0%, rgba(254, 252, 255, 0.563623) 49.08%, rgba(252, 247, 255, 0) 100%);
 }
 .text-todo, .text-completed {
     display: flex;
@@ -207,7 +215,7 @@ button {
 }
 .icon-todo {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     margin-left: auto;
     margin-right: 20px;
 }
@@ -220,13 +228,19 @@ button {
 }
 
 /* CARD COMPLETO */
+.reminder-card-completed {
+    border-color: #3eb59fbf;
+}
 .reminder-card-completed::before {
-    background: rgba(85, 251, 220, 0.75);
+    background: linear-gradient(90deg, rgba(85, 251, 220, 0.89) 0%, rgba(85, 251, 220, 0.563623) 47%, rgba(255, 255, 255, 0) 100%);
+}
+.reminder-card-completed .reminder-status {
+    color: #88dfcfdc;
 }
 .icon-completed {
     display: flex;
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 .icon-completed img {
     transition: 0.5s;
@@ -238,7 +252,11 @@ button {
 
 /* CARD DESATIVADO */
 .reminder-card-disabled {
+    border-color: #494355;
     background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.055) 100%);
+}
+.reminder-card-disabled::before {
+    background: linear-gradient(90deg, rgba(99, 88, 115, 0.89) 0%, rgba(103, 94, 118, 0.2848) 52.21%, rgba(171, 171, 171, 0) 100%);
 }
 .text-disabled {
     display: flex;
@@ -251,7 +269,7 @@ button {
 }
 .reminder-status-disabled {
     color: var(--disabled-text-color);
-    font-size: 0.625rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     font-weight: 600;
     user-select: none;
@@ -261,7 +279,7 @@ button {
 .icon-disabled {
     display: flex;
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 .icon-disabled img {
     transition: 0.5s;
@@ -270,42 +288,45 @@ button {
     transform: scale(1.1);
     transition: 0.5s;
 }
-.reminder-card-disabled::before {
-    background: #827596;
-}
 
 
 
 /* ----- MODAL ------ */
-.modal {
+.modal-container {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+.modal {
+    display: none;
+    flex-direction: column;
     position: fixed;
     padding: 20px;
     height: 410px;
     width: 433px;
-    top: 20%;
-    background: #4C3C76;
+    background: #5E4996;
     border-radius: 20px;
     border: 0.5px solid;
-    border-color: #5F3871;
+    border-color: #6446b8;
     overflow: auto;
     z-index: 2;
 }
-/* .overlay {
+.overlay {
+    display: none;
     position: fixed;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(3px);
     z-index: 1;
-} */
+}
 .modal-header {
     display: flex;
     justify-content: space-between;   
     align-items: center;
-    margin-bottom: 45px;
+    margin-bottom: 60px;
 }
 .modal-header h2 {
     color: var(--text-primary-color);
@@ -339,7 +360,7 @@ button {
     padding: 15px;
 }
 .save-time-text {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     height: 40px;
     width: 110px;
     transition: 0.5s;
@@ -359,8 +380,9 @@ button {
 }
 .save {
     color: var(--text-secondary-color);
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
     margin: 0 auto;
     width: 170px;
     height: 40px;

@@ -3,6 +3,7 @@ let date = luxon.DateTime.now().setLocale('pt-br');
 const monthDisplay = document.getElementById('month-selector');
 const reminderCard = document.getElementById('reminder-cards');
 const modal = document.getElementById('modal');
+const modalOverlay = document.getElementById('overlay')
 const btnOpenModal = document.getElementById('open-modal');
 const btnCloseModal = document.getElementById('close-modal');
 const reminders = [];
@@ -11,10 +12,12 @@ updateDisplay();
 
 btnOpenModal.onclick = function openModal() {
     modal.style.display = 'flex';
+    modalOverlay.style.display = 'flex';
 }
 
 btnCloseModal.onclick = function closeModal() {
     modal.style.display = 'none';
+    modalOverlay.style.display = 'none';
 }
 
 class Reminder {
@@ -38,7 +41,7 @@ class Reminder {
                 <div class="card-todo">
                     <div class="reminder-status">
                         <p>
-                            Pendente
+                            Ativo
                         </p>
                     </div>
                     <div class="text-todo">
@@ -93,7 +96,7 @@ class Reminder {
                 <div class="card-disabled">
                     <div class="reminder-status-disabled">
                         <p>
-                            Desabilitado
+                            Desativado
                         </p>
                     </div>
                     <div class="text-disabled">
@@ -107,7 +110,7 @@ class Reminder {
                 </div>
                 <div class="icon-disabled">
                     <button class="reminder-btn" type="button" title="Reativar tarefa" onclick="updateReminderStatus(${this.index}, 'to-do')">
-                        <img src='./img/patch-plus.svg' onmouseover="this.src='./img/patch-plus1.svg';" onmouseout="this.src='../img/patch-plus.svg';" />
+                        <img src='./img/patch-plus.svg' onmouseover="this.src='./img/patch-plus1.svg';" onmouseout="this.src='./img/patch-plus.svg';" />
                     </button>
                 </div>
                 </div>
@@ -151,19 +154,26 @@ function updateDisplay() {
 }
 
 function createReminder() {
-    const text = document.getElementById('save-reminder-text').value;
-    let time = document.getElementById('save-reminder-time').value;
+    const text = document.getElementById('save-reminder-text');
+    const time = document.getElementById('save-reminder-time');
 
-    if (!text || !time) {
+    if (!text.value || !time.value) {
         return;
     }
     
-    time = time.split(':').map(n => parseInt(n));
-    let reminderDate = date.set({ hour: time[0], minute: time[1] });
-    let reminder = new Reminder(text, reminderDate, reminders.length);
+    let fixedTime = time.value.split(':').map(n => parseInt(n));
+    let reminderDate = date.set({ hour: fixedTime[0], minute: fixedTime[1] });
+    let reminder = new Reminder(text.value, reminderDate, reminders.length);
 
     reminders.push(reminder);
-    updateDisplay();
+
+    modal.style.display = 'none';
+    modalOverlay.style.display = 'none';
+
+    text.value = '';
+    time.value = '';
+
+    updateDisplay();   
 }
 
 function updateReminderStatus(index, status) {
