@@ -4,11 +4,136 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script>
     <title>Homework 05 - JS</title>
 </head>
 <body>
+    <main class="container">
 
-    <script src="./assets/script.js"></script>    
+        <header>
+            <div class="main-container">
+                <div>
+                    <h1>Lembretes Mensais</h1>
+                </div>
+                <div class="months-btn">
+                    <button class="previous-btn" type="button" onclick="previousMonth()" title="Mês anterior">
+                        <i><img src="./img/chevron-left.svg" alt="Voltar"></i>
+                    </button>
+                    <p id="month-selector" class="month-display">
+                        Outubro, 2022
+                    </p>
+                    <button class="next-btn" type="button" onclick="nextMonth()" title="Próximo mês">
+                        <i><img src="./img/chevron-right.svg" alt="Voltar"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button id="open-modal" class="add-reminder" type="button" onclick="openModal()">
+                <img src="./img/patch-plus-fill.svg" alt="Adicionar">
+                <p>Adicionar lembrete</p>
+            </button>
+
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Adicionar um lembrete</h2>
+                    <button id="close-modal" class="close-modal" type="button">
+                        <img src="./img/close.svg" alt="" title="Fechar">
+                    </button>
+                </div>
+
+                <label for="">Hora do lembrete</label>
+                <input class="save-time-text" id="save-reminder-time" type="time">
+
+                <label for="">Escreva seu lembrete</label>
+                <input class="save-text" id="save-reminder-text" type="text">
+
+                <button class="save" type="button" onclick="createReminder()" title="Salvar lembrete">
+                    Salvar
+                </button>
+            </div>
+
+        </header>
+
+        <section id="reminder-cards">
+
+            <div class="reminder-card-todo">
+                <div class="card-todo">
+                    <div class="reminder-status">
+                        <p>
+                            Pendente
+                        </p>
+                    </div>
+                    <div class="text-todo">
+                        <span class="reminder-time-todo">
+                            13:30
+                        </span>
+                        <p class="reminder-text-todo">
+                            Aula de JavaScript
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-todo">
+                    <button class="reminder-btn" type="button" title="Completar">
+                        <img src='./img/patch-check.svg' onmouseover="this.src='./img/patch-check1.svg';" onmouseout="this.src='./img/patch-check.svg';" />
+                    </button>
+                    <button class="reminder-btn" type="button" title="Desabilitar">
+                        <img src='./img/patch-minus.svg' onmouseover="this.src='./img/patch-minus-fill.svg';" onmouseout="this.src='./img/patch-minus.svg';" />
+                    </button>
+                </div>
+            </div>
+
+            <div class="reminder-card-completed">
+                <div class="card-completed">
+                    <div class="reminder-status">
+                        <p>
+                            Concluído
+                        </p>
+                    </div>
+                    <div class="text-completed">
+                        <span class="reminder-time-completed">
+                            18:30
+                        </span>
+                        <p class="reminder-text-completed">
+                            Fazer o Homework
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-completed">
+                    <button class="reminder-btn" type="button" title="Remarcar como pendente">
+                        <img src='./img/patch-check-fill.svg' onmouseover="this.src='./img/patch-check-fill1.svg';" onmouseout="this.src='./img/patch-check-fill.svg';" />
+                    </button>
+                </div>
+            </div>
+
+            <div class="reminder-card-disabled">
+                <div class="card-disabled">
+                    <div class="reminder-status-disabled">
+                        <p>
+                            Desativado
+                        </p>
+                    </div>
+                    <div class="text-disabled">
+                        <span class="reminder-time-disabled">
+                            18:30
+                        </span>
+                        <p class="reminder-text-disabled">
+                            Fazer o Homework
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-disabled">
+                    <button class="reminder-btn" type="button" title="Reativar tarefa">
+                        <img src='./img/patch-plus.svg' onmouseover="this.src='./img/patch-plus1.svg';" onmouseout="this.src='../img/patch-plus.svg';" />
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+    <script src="./js/script.js"></script>
 </body>
 </html>

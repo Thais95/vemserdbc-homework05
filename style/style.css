@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    user-select: none;
+    list-style: none;
+    box-sizing: border-box;
+    outline: none;
+}
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+:root { font-family: 'Inter var', sans-serif; }
+}
+:root {
+    --text-primary-color: #FCF7FF;
+    --text-secondary-color: #322458;
+    --text-detail-color: #574280;
+    --done-color: #55FBDC;
+    --disabled-text-color: #877a9d;
+    --disabled-bg-color: 827596;
+}
+body, input, button, textarea {
+    font-family: 'Inter var', sans-serif;
+}
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #78679C 0%, #3D286B 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1280px;
+}
+
+
+/* ---- LEMBRETES MENSAIS ---- */
+header {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    color: var(--text-primary-color);
+    font-weight: 500;
+    font-size: 2.625rem;
+    user-select: none;
+}
+button {
+    cursor: pointer;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 42px;
+    width: 600px;
+    height: 220px;
+    border-radius: 25px;
+    background: #4C3C76;
+    box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid;
+    border-color: #5F3871;
+}
+
+/* BOTÃO DE PASSAR OS MESES */
+.months-btn {
+    display: flex;
+    align-items: center;
+}
+.month-display {
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: var(--text-primary-color);
+    background-color: #3C2D64;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    user-select: none;
+}
+.previous-btn {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.11) 100%);
+    border-radius: 15px 0px 0px 15px;
+    transition: 0.5s;
+}
+.previous-btn:hover {
+    background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.411) 0%, rgba(255, 255, 255, 0.2) 100%);
+    transition: 0.5s;
+}
+.next-btn {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.11) 100%);
+    border-radius: 0px 15px 15px 0px;
+    transition: 0.5s;
+}
+.next-btn:hover {
+    background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.411) 0%, rgba(255, 255, 255, 0.2) 100%);
+    transition: 0.5s;
+}
+
+/* ADICIONAR LEMBRETE */
+.add-reminder {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 280px;
+    height: 40px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+    background: rgba(255, 246, 255, 0.85);
+    box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: 0.5s;
+}
+.add-reminder:hover {
+    background-color: white;
+    color: #B648EA;
+    transition: 0.5s;
+}
+.add-reminder img {
+    margin-left: 5px;
+}
+.add-reminder p {
+    margin-left: 40px;
+}
+
+
+
+/* ----- CARDS DOS LEMBRETES ----- */
+.reminder-card-todo,
+.reminder-card-completed,
+.reminder-card-disabled {
+    width: 600px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.11) 100%);
+    box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    margin-bottom: 15px;
+    transition: 1s;
+    border: 0.5px solid;
+    border-color: #5F3871;
+}
+.reminder-card-todo::before,
+.reminder-card-completed::before,
+.reminder-card-disabled::before {
+    content: '';
+    width: 50px;
+    height: 70px;
+    margin-right: 15px;
+    background: rgba(85, 251, 220, 0.75);
+    border-radius: 20px 0px 0px 20px;
+}
+.reminder-status {
+    color: var(--text-detail-color);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+.reminder-btn {
+    background: none;
+    display: flex;
+}
+
+/* CARD PENDENTE */
+.reminder-card-todo::before {
+    background: rgba(252, 247, 255, 0.89);
+}
+.text-todo, .text-completed {
+    display: flex;
+    gap: 15px;
+    color: var(--text-primary-color);
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+.icon-todo {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+.icon-todo img {
+    transition: 0.5s;
+}
+.icon-todo img:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+/* CARD COMPLETO */
+.reminder-card-completed::before {
+    background: rgba(85, 251, 220, 0.75);
+}
+.icon-completed {
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+}
+.icon-completed img {
+    transition: 0.5s;
+}
+.icon-completed img:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+/* CARD DESATIVADO */
+.reminder-card-disabled {
+    background: linear-gradient(98.13deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.055) 100%);
+}
+.text-disabled {
+    display: flex;
+    gap: 15px;
+    color: var(--disabled-text-color);
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-decoration: line-through;
+    user-select: none;
+}
+.reminder-status-disabled {
+    color: var(--disabled-text-color);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+.icon-disabled {
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+}
+.icon-disabled img {
+    transition: 0.5s;
+}
+.icon-disabled img:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.reminder-card-disabled::before {
+    background: #827596;
+}
+
+
+
+/* ----- MODAL ------ */
+.modal {
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    height: 410px;
+    width: 433px;
+    background: #4C3C76;
+    border-radius: 20px;
+    border: 0.5px solid;
+    border-color: #5F3871;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+    margin-bottom: 45px;
+}
+.modal-header h2 {
+    color: var(--text-primary-color);
+    font-weight: 500;
+    font-size: 1.75rem;
+    user-select: none;
+}
+.close-modal {
+    background: none;    
+    display: flex;
+    align-items: center;
+}
+.close-modal img {
+    transition: 0.5s;
+}
+.close-modal img:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+.modal label {
+    color: var(--text-primary-color);
+    font-size: 1.15rem;
+    padding-left: 2px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.modal input {
+    background: #E4DAEB;
+    box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+.save-time-text {
+    margin-bottom: 20px;
+    height: 40px;
+    width: 110px;
+    transition: 0.5s;
+}
+.save-time-text:focus {
+    transition: 0.5s;
+    background-color: white;
+}
+.save-text {
+    height: 40px;
+    margin-bottom: 50px;
+    transition: 0.5s;
+}
+.save-text:focus {
+    transition: 0.5s;
+    background-color: white;
+}
+.save {
+    color: var(--text-secondary-color);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 auto;
+    width: 170px;
+    height: 40px;
+    background: rgba(255, 246, 255, 0.85);
+    box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.save:hover {
+    background-color: white;
+    color: #B648EA;
+    transition: 0.5s;
+}
