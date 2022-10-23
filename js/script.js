@@ -33,28 +33,82 @@ class Reminder{
 
             case 'to-do':
                 return `
-                <div class="task-card">
-                    <p>Status to do</p>
-                    <p>${this.title}</p>
-                    <p>${this.date.toFormat("HH':'mm")}</p>
+                <div class="reminder-card-todo">
+                <div class="card-todo">
+                    <div class="reminder-status">
+                        <p>
+                            Pendente
+                        </p>
+                    </div>
+                    <div class="text-todo">
+                        <span class="reminder-time-todo">
+                            ${this.date.toFormat("HH':'mm")}
+                        </span>
+                        <p class="reminder-text-todo">
+                            ${this.title}
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-todo">
+                    <button class="reminder-btn" type="button" title="Completar">
+                        <img src='./img/patch-check.svg' onmouseover="this.src='./img/patch-check1.svg';" onmouseout="this.src='./img/patch-check.svg';" />
+                    </button>
+                    <button class="reminder-btn" type="button" title="Desabilitar">
+                        <img src='./img/patch-minus.svg' onmouseover="this.src='./img/patch-minus-fill.svg';" onmouseout="this.src='./img/patch-minus.svg';" />
+                    </button>
+                </div>
                 </div>
                 `
 
             case 'completed':
                 return `
-                <div class="task-card">
-                    <p>Status completo</p>
-                    <p>${this.title}</p>
-                    <p>${this.date.toFormat("HH':'mm")}</p>
+                <div class="reminder-card-completed">
+                <div class="card-completed">
+                    <div class="reminder-status">
+                        <p>
+                            ${this.date.toFormat("HH':'mm")}
+                        </p>
+                    </div>
+                    <div class="text-completed">
+                        <span class="reminder-time-completed">
+                            18:30
+                        </span>
+                        <p class="reminder-text-completed">
+                            ${this.title}
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-completed">
+                    <button class="reminder-btn" type="button" title="Remarcar como pendente">
+                        <img src='./img/patch-check-fill.svg' onmouseover="this.src='./img/patch-check-fill1.svg';" onmouseout="this.src='./img/patch-check-fill.svg';" />
+                    </button>
+                </div>
                 </div>
                 `
 
             case 'disabled':
                 return `
-                <div class="task-card">
-                    <p>Status desativado</p>
-                    <p>${this.title}</p>
-                    <p>${this.date.toFormat("HH':'mm")}</p>
+                <div class="reminder-card-disabled">
+                <div class="card-disabled">
+                    <div class="reminder-status-disabled">
+                        <p>
+                            ${this.date.toFormat("HH':'mm")}
+                        </p>
+                    </div>
+                    <div class="text-disabled">
+                        <span class="reminder-time-disabled">
+                            18:30
+                        </span>
+                        <p class="reminder-text-disabled">
+                            ${this.title}
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-disabled">
+                    <button class="reminder-btn" type="button" title="Reativar tarefa">
+                        <img src='./img/patch-plus.svg' onmouseover="this.src='./img/patch-plus1.svg';" onmouseout="this.src='../img/patch-plus.svg';" />
+                    </button>
+                </div>
                 </div>
                 `
         }
@@ -73,7 +127,7 @@ function nextMonth() {
 
 function updateDisplay() {
     monthDisplay.innerText = date.toFormat('LLLL, yyyy');
-    // reminderCard.innerHTML = '';
+    reminderCard.innerHTML = '';
 
     reminders.forEach(task => {
         if(task.date.hasSame(date, 'month', 'year')) {
@@ -82,7 +136,13 @@ function updateDisplay() {
     })
 
     if(!reminderCard.innerHTML) {
-        return // COLOCAR AQUI CARD SEM NENHUM LEMBRETE
+        reminderCard.innerHTML = `
+        <div class="reminder-card-none">
+            <p>
+                Nenhum lembrete criado ainda!
+            </p>
+        </div>
+        `
     }
 }
 

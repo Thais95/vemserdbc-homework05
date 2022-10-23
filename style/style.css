@@ -147,7 +147,8 @@ button {
 /* ----- CARDS DOS LEMBRETES ----- */
 .reminder-card-todo,
 .reminder-card-completed,
-.reminder-card-disabled {
+.reminder-card-disabled,
+.reminder-card-none {
     width: 600px;
     height: 70px;
     display: flex;
@@ -183,6 +184,14 @@ button {
 .reminder-btn {
     background: none;
     display: flex;
+}
+
+/* CARD VAZIO */
+.reminder-card-none p {
+    padding-left: 20px;
+    color: var(--text-secondary-color);
+    font-size: 1.125rem;
+    font-weight: 500;
 }
 
 /* CARD PENDENTE */
@@ -269,7 +278,7 @@ button {
 
 /* ----- MODAL ------ */
 .modal {
-    display: none;
+    display: flex;
     flex-direction: column;
     padding: 20px;
     height: 410px;

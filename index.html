@@ -18,6 +18,7 @@
                 <div>
                     <h1>Lembretes Mensais</h1>
                 </div>
+                <!-- BOTÃO DE TROCAR MESES -->
                 <div class="months-btn">
                     <button class="previous-btn" type="button" onclick="previousMonth()" title="Mês anterior">
                         <i><img src="./img/chevron-left.svg" alt="Voltar"></i>
@@ -31,11 +32,13 @@
                 </div>
             </div>
 
+            <!-- BOTÃO DE ADICIONAR TAREFA -->
             <button id="open-modal" class="add-reminder" type="button" onclick="openModal()">
                 <img src="./img/patch-plus-fill.svg" alt="Adicionar">
                 <p>Adicionar lembrete</p>
             </button>
 
+            <!-- MODAL -->
             <div class="modal">
                 <div class="modal-header">
                     <h2>Adicionar um lembrete</h2>
@@ -57,81 +60,8 @@
 
         </header>
 
-        <section id="reminder-cards">
-
-            <div class="reminder-card-todo">
-                <div class="card-todo">
-                    <div class="reminder-status">
-                        <p>
-                            Pendente
-                        </p>
-                    </div>
-                    <div class="text-todo">
-                        <span class="reminder-time-todo">
-                            13:30
-                        </span>
-                        <p class="reminder-text-todo">
-                            Aula de JavaScript
-                        </p>
-                    </div>
-                </div>
-                <div class="icon-todo">
-                    <button class="reminder-btn" type="button" title="Completar">
-                        <img src='./img/patch-check.svg' onmouseover="this.src='./img/patch-check1.svg';" onmouseout="this.src='./img/patch-check.svg';" />
-                    </button>
-                    <button class="reminder-btn" type="button" title="Desabilitar">
-                        <img src='./img/patch-minus.svg' onmouseover="this.src='./img/patch-minus-fill.svg';" onmouseout="this.src='./img/patch-minus.svg';" />
-                    </button>
-                </div>
-            </div>
-
-            <div class="reminder-card-completed">
-                <div class="card-completed">
-                    <div class="reminder-status">
-                        <p>
-                            Concluído
-                        </p>
-                    </div>
-                    <div class="text-completed">
-                        <span class="reminder-time-completed">
-                            18:30
-                        </span>
-                        <p class="reminder-text-completed">
-                            Fazer o Homework
-                        </p>
-                    </div>
-                </div>
-                <div class="icon-completed">
-                    <button class="reminder-btn" type="button" title="Remarcar como pendente">
-                        <img src='./img/patch-check-fill.svg' onmouseover="this.src='./img/patch-check-fill1.svg';" onmouseout="this.src='./img/patch-check-fill.svg';" />
-                    </button>
-                </div>
-            </div>
-
-            <div class="reminder-card-disabled">
-                <div class="card-disabled">
-                    <div class="reminder-status-disabled">
-                        <p>
-                            Desativado
-                        </p>
-                    </div>
-                    <div class="text-disabled">
-                        <span class="reminder-time-disabled">
-                            18:30
-                        </span>
-                        <p class="reminder-text-disabled">
-                            Fazer o Homework
-                        </p>
-                    </div>
-                </div>
-                <div class="icon-disabled">
-                    <button class="reminder-btn" type="button" title="Reativar tarefa">
-                        <img src='./img/patch-plus.svg' onmouseover="this.src='./img/patch-plus1.svg';" onmouseout="this.src='../img/patch-plus.svg';" />
-                    </button>
-                </div>
-            </div>
-
-        </section>
+        <!-- LISTA DE CARDS DOS LEMBRETES -->
+        <section id="reminder-cards"></section>
 
     </main>
     <script src="./js/script.js"></script>
