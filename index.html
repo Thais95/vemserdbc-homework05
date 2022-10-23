@@ -14,10 +14,13 @@
     <main class="container">
 
         <header>
+
             <div class="main-container">
+
                 <div>
                     <h1>Lembretes Mensais</h1>
                 </div>
+
                 <!-- BOTÃO DE TROCAR MESES -->
                 <div class="months-btn">
                     <button class="previous-btn" type="button" onclick="previousMonth()" title="Mês anterior">
@@ -30,16 +33,20 @@
                         <i><img src="./img/chevron-right.svg" alt="Voltar"></i>
                     </button>
                 </div>
+
             </div>
 
             <!-- BOTÃO DE ADICIONAR TAREFA -->
-            <button id="open-modal" class="add-reminder" type="button" onclick="openModal()">
+            <button id="open-modal" class="add-reminder" type="button">
                 <img src="./img/patch-plus-fill.svg" alt="Adicionar">
                 <p>Adicionar lembrete</p>
             </button>
+            
+        </header>
 
-            <!-- MODAL -->
-            <div class="modal">
+        <!-- MODAL -->
+        <div class="overlay hidden">
+            <div id="modal" class="modal hidden">
                 <div class="modal-header">
                     <h2>Adicionar um lembrete</h2>
                     <button id="close-modal" class="close-modal" type="button">
@@ -57,8 +64,7 @@
                     Salvar
                 </button>
             </div>
-
-        </header>
+        </div>
 
         <!-- LISTA DE CARDS DOS LEMBRETES -->
         <section id="reminder-cards"></section>

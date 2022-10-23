@@ -8,17 +8,11 @@ const btnCloseModal = document.getElementById('close-modal');
 updateDisplay();
 
 btnOpenModal.onclick = function openModal() {
-    document.getElementById('modal').style.display = 'flex';
+    modal.style.display = 'flex';
 }
 
 btnCloseModal.onclick = function closeModal() {
     modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-    if (event.target !==  modal) {
-        modal.style.display = 'none';
-    }
 }
 
 class Reminder{
@@ -50,7 +44,7 @@ class Reminder{
                     </div>
                 </div>
                 <div class="icon-todo">
-                    <button class="reminder-btn" type="button" title="Completar">
+                    <button class="reminder-btn" type="button" title="Completar" onclick="statusCompleted()">
                         <img src='./img/patch-check.svg' onmouseover="this.src='./img/patch-check1.svg';" onmouseout="this.src='./img/patch-check.svg';" />
                     </button>
                     <button class="reminder-btn" type="button" title="Desabilitar">
@@ -162,5 +156,12 @@ function createReminder() {
     }));
 
     reminders.push(reminder);
+    reminders.sort(function(a, b){return a.date - b.date;});
     updateDisplay();
+    console.log(reminders)
 }
+
+// function statusCompleted(indice) {
+//     reminders[indice].status = 'completed';
+//     updateDisplay()
+// }
