@@ -26,7 +26,7 @@ body {
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background: linear-gradient(180deg, #8e77c6 0%, #40277d 100%);
+    background: linear-gradient(180deg, #917dc3 0%, #422b7e 100%);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -169,7 +169,7 @@ button {
 .reminder-card-completed::before,
 .reminder-card-disabled::before {
     content: '';
-    width: 50px;
+    width: 55px;
     height: 100%;
     margin-right: 15px;
     background: rgba(85, 251, 220, 0.75);
